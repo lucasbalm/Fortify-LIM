@@ -1,10 +1,10 @@
-version: "3"
+version: "2"
 services:
     lim:
         image: "fortifydocker/lim:21.2"
         container_name: lim
         ports:
-            - "8090:8090"
+            - "8090:80"
         environment:
           - LimUseSSL=false
           - LimAdminWebSiteName=LimAdmin
@@ -19,12 +19,5 @@ services:
           - LimAdminFriendlyName=LimAdmin!
         restart: always
         volumes:
-          - lim:c:/lim
-        deploy:
-            resources:
-                limits:
-                    cpus: '2'
-                    memory: 8g
-
-volumes:
-  lim:
+          -  c:/tools/lim:c:/lim
+        command: "--memory=8g --cpus=2"
