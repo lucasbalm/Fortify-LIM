@@ -19,5 +19,8 @@ services:
           - LimAdminFriendlyName=LimAdmin!
         restart: always
         volumes:
-          -  c:/tools/lim:c:/lim
+          -  lim:c:/lim
         command: "--memory=8g --cpus=2"
+    
+volumes:
+  lim:
